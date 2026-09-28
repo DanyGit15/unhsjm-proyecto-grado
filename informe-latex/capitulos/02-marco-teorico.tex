@@ -3,12 +3,70 @@
 
 \section{Marco Teórico}
 
-En la Figura \ref{fig:ejemplo-diagrama} se ilustra el esquema general del proceso de desarrollo.
+El presente marco teórico aborda los principales antecedentes relacionados con la digitalización de citas médicas y los fundamentos técnicos que sustentan el desarrollo de un sistema web capaz de operar en entornos de conectividad intermitente. Para ello, se consideran investigaciones previas sobre sistemas de gestión de citas médicas, estándares de interoperabilidad en salud y conceptos relacionados con arquitecturas orientadas a la operación sin conexión.
 
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=0.5\textwidth]{logo-unhsjm.jpeg}
-  \caption{Isologo Institucional y Diagrama de Referencia.}
-  \label{fig:ejemplo-diagrama}
-\end{figure}
+\subsection{Antecedentes Internacionales}
 
+\textcite{zhao2017} realizaron una revisión sistemática sobre los sistemas web de agendamiento médico, en la cual analizaron diferentes plataformas implementadas a nivel mundial. Los autores identificaron que estos sistemas pueden contribuir a reducir el ausentismo de los pacientes, disminuir la carga administrativa y reducir los tiempos de espera. Asimismo, clasificaron los sistemas de citas médicas según sus mecanismos de procesamiento, diferenciando entre aquellos que utilizan procesos asíncronos y los que funcionan en tiempo real. Estos conceptos resultan relevantes para el presente proyecto debido a la necesidad de procesar operaciones realizadas durante períodos de conectividad intermitente y sincronizarlas posteriormente con el servidor.
+
+Otro referente internacional corresponde al estándar HL7 FHIR para el agendamiento de citas médicas. Este estándar proporciona una estructura para representar información relacionada con la disponibilidad de profesionales, intervalos de tiempo y citas médicas. Dentro de este modelo se encuentran los recursos \textit{Schedule}, \textit{Slot} y \textit{Appointment}, los cuales permiten representar respectivamente la disponibilidad de profesionales o consultorios, los intervalos de tiempo disponibles y la información asociada a una cita médica \parencite{santenet2026}. Este marco proporciona una referencia para la organización de los datos relacionados con las citas y su posible representación dentro de una base de datos relacional.
+
+\subsection{Antecedentes Nacionales y Locales}
+
+\textcite{diaz2019} desarrolló un sistema web para el proceso de atenciones médicas ambulatorias en el Centro Detector del Cáncer S.A.C. El proyecto empleó una metodología ágil SCRUM y un diseño experimental para gestionar procesos relacionados con citas y consultas médicas. Los resultados obtenidos permitieron evidenciar que la automatización de estos procesos puede contribuir a mejorar la eficiencia de la atención y disminuir problemas relacionados con el incumplimiento de las citas.
+
+Por su parte, \textcite{herrera2021} implementó un sistema web para la gestión de citas médicas en el Centro de Salud Nicrupampa del distrito de Independencia, Huaraz. El estudio abordó la problemática relacionada con las filas y la aglomeración de pacientes ocasionadas por el proceso presencial de reservación. Los resultados permitieron determinar que el agendamiento mediante una plataforma web puede facilitar el acceso de los pacientes a las citas y contribuir a la optimización de los procesos administrativos.
+
+\textcite{nolasco2019} desarrolló una aplicación web para el control de citas médicas del Centro de Salud de San Jerónimo, Andahuaylas. El proyecto utilizó la metodología de Programación Extrema (XP), combinada con el marco de gestión de proyectos PMBOK. La implementación permitió reemplazar procedimientos manuales por un sistema centralizado para el control de las citas, demostrando la utilidad de las metodologías ágiles en el desarrollo de soluciones destinadas a la gestión de servicios de salud.
+
+Asimismo, \textcite{quispe2018} desarrolló una aplicación web para la gestión de historias clínicas en el Centro de Salud San Isidro utilizando la metodología Rational Unified Process (RUP). La solución permitió centralizar la información de los pacientes y facilitar su consulta por parte del personal autorizado. Este antecedente resulta relevante para el presente proyecto debido a la importancia de centralizar la información médica y establecer una arquitectura que permita separar los componentes del sistema.
+
+\textcite{valera2024} desarrolló un sistema web para la gestión de citas médicas en la Clínica Dental Arroyo de Chimbote. El estudio abordó la problemática relacionada con los procesos tradicionales de asignación de citas y planteó la utilización de una solución web para mejorar su administración. De manera similar, \textcite{mera2022} desarrollaron una aplicación web orientada a mejorar la asignación de citas médicas por especialidad en una Microred de Salud de la ciudad de Chincha Baja. Ambos antecedentes evidencian la aplicación de sistemas web para automatizar procesos de asignación de citas y mejorar la organización de la atención médica.
+
+En el contexto nacional, \textcite{siero2025} desarrollaron un sistema web para la gestión de citas y la optimización del flujo de espera de pacientes y citas médicas en el Consultorio Jesucristo es la Roca, ubicado en La Concepción, Masaya. El estudio permitió identificar dificultades relacionadas con la visibilidad del turno y la organización del flujo de pacientes, planteando la utilización de una solución web como mecanismo para mejorar la gestión de las citas y el proceso de atención.
+
+Los antecedentes analizados permiten identificar que la implementación de sistemas web constituye una alternativa para automatizar la gestión de citas médicas, centralizar información y facilitar el acceso de los usuarios a los servicios de salud \parencite{diaz2019,herrera2021,nolasco2019,quispe2018,mera2022,valera2024,siero2025}. Sin embargo, el presente proyecto incorpora como característica diferenciadora la operación en escenarios de conectividad intermitente, mediante mecanismos que permitan almacenar temporalmente las operaciones y sincronizar posteriormente la información con el servidor.
+
+\subsection{Definición de Términos Básicos}
+
+Para efectos del presente proyecto de grado, se establecen las siguientes definiciones conceptuales y técnicas relacionadas con el desarrollo de un sistema web para la gestión de citas médicas mediante C\# (.NET) y PostgreSQL.
+
+\subsubsection{Sistema Web de Gestión de Citas Médicas}
+
+Un sistema web de gestión de citas médicas es una plataforma de software accesible mediante navegadores web que permite centralizar y automatizar procesos relacionados con el registro de pacientes, la programación de agendas profesionales y la reserva de citas médicas. Este tipo de solución busca facilitar la administración de la información y mejorar la interacción entre los usuarios involucrados en el proceso de atención médica \parencite{zhao2017,nolasco2019}.
+
+\subsubsection{Entorno de Conectividad Intermitente}
+
+Un entorno de conectividad intermitente corresponde a un escenario en el cual la comunicación entre el dispositivo cliente y el servidor puede presentar interrupciones o períodos prolongados de latencia. En el contexto del presente proyecto, esta condición representa un aspecto fundamental debido a que el sistema debe contemplar mecanismos que permitan mantener determinadas operaciones disponibles durante los períodos en los que no exista comunicación con el servidor.
+
+\subsubsection{Arquitectura Offline-First}
+
+La arquitectura \textit{Offline-First} constituye una estrategia de diseño en la que las funcionalidades principales de una aplicación se diseñan considerando que la conexión a Internet puede no estar disponible. Bajo este enfoque, la aplicación puede conservar información operacional de manera local y posteriormente sincronizarla con el servidor cuando se restablezca la conexión. Esta estrategia se relaciona con los mecanismos de procesamiento asíncrono identificados en los sistemas web de citas médicas \parencite{zhao2017}.
+
+\subsubsection{Sincronización Asíncrona de Datos}
+
+La sincronización asíncrona de datos es el proceso mediante el cual las operaciones almacenadas localmente durante un período sin conexión son enviadas posteriormente al servidor para actualizar la información centralizada. En el presente proyecto, este mecanismo permitirá mantener determinadas operaciones disponibles durante una interrupción de conectividad y realizar su procesamiento cuando se restablezca la comunicación.
+
+\subsubsection{Resolución de Conflictos y Control de Concurrencia}
+
+La resolución de conflictos y el control de concurrencia comprenden los mecanismos utilizados para gestionar situaciones en las que dos o más usuarios intentan realizar operaciones incompatibles sobre los mismos datos. En el contexto de las citas médicas, uno de los principales escenarios corresponde a la posibilidad de que varios usuarios intenten reservar una misma franja horaria mientras trabajan sin conexión. Por esta razón, el sistema deberá establecer reglas que permitan validar las operaciones durante el proceso de sincronización y evitar la generación de reservas duplicadas.
+
+\subsubsection{Recursos HL7 FHIR}
+
+HL7 FHIR es un estándar de interoperabilidad utilizado para representar e intercambiar información relacionada con servicios de salud. Dentro del proceso de programación de citas se consideran recursos como \textit{Appointment}, \textit{Schedule} y \textit{Slot}. El recurso \textit{Schedule} permite representar la disponibilidad de un profesional o recurso, \textit{Slot} representa un intervalo de tiempo disponible para una actividad y \textit{Appointment} representa la información relacionada con una cita programada \parencite{santenet2026}.
+
+\subsubsection{PostgreSQL}
+
+PostgreSQL es un sistema de gestión de bases de datos relacional utilizado como repositorio central para el almacenamiento de la información del sistema. En el presente proyecto será utilizado para gestionar los datos relacionados con pacientes, médicos, especialidades, consultorios, horarios y citas médicas, además de la información necesaria para los procesos de sincronización.
+
+\subsubsection{Backend en C\# (.NET)}
+
+C\# es un lenguaje de programación utilizado en conjunto con la plataforma .NET para desarrollar aplicaciones y servicios. En el presente proyecto será utilizado para implementar la API y la lógica de negocio encargada de procesar las operaciones relacionadas con la gestión de citas médicas, autenticación, autorización, sincronización y comunicación con la base de datos PostgreSQL.
+
+\subsection{Relación del Marco Teórico con el Proyecto}
+
+Los antecedentes revisados evidencian la utilidad de los sistemas web para automatizar la gestión de citas médicas y mejorar la organización de los procesos administrativos \parencite{diaz2019,herrera2021,nolasco2019}. A partir de estos antecedentes, el presente proyecto incorpora una arquitectura orientada a soportar escenarios de conectividad intermitente.
+
+La utilización de mecanismos de procesamiento asíncrono y sincronización permite plantear una solución en la que determinadas operaciones puedan continuar ejecutándose durante períodos sin conexión y posteriormente ser conciliadas con la información almacenada en el servidor. Asimismo, la consideración de los recursos definidos por HL7 FHIR proporciona una referencia para estructurar la información relacionada con la disponibilidad, los intervalos de tiempo y las citas médicas \parencite{zhao2017,santenet2026}.
+
+De esta manera, los conceptos abordados en el marco teórico sirven como fundamento para el diseño de la arquitectura, la organización de la base de datos y la implementación de los mecanismos necesarios para la gestión de citas médicas en escenarios de conectividad intermitente.

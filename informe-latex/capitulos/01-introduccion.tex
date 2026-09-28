@@ -1,7 +1,80 @@
 % Capítulo 1: Introducción
 % Propósito: Describir los antecedentes, planteamiento del problema, justificación, formulación y los objetivos (general y específicos) del proyecto de grado.
 
-\section{Introducción}
+\section{Antecedentes}
 
-El desarrollo de sistemas de software requiere la aplicación rigurosa de principios de ingeniería de software \parencite{sommerville2011}. Como señala \textcite{pressman2010}, la calidad del software está directamente vinculada al proceso empleado durante su construcción.
+El uso de sistemas web en el sector salud ha permitido automatizar actividades que tradicionalmente se realizan de forma manual, como el registro de pacientes, la organización de horarios y la asignación de consultas médicas. Estas soluciones facilitan el acceso a la información y contribuyen a disminuir los errores asociados al uso de agendas físicas. Diferentes investigaciones han demostrado que la implementación de sistemas web puede mejorar la organización de los procesos relacionados con la atención y gestión de citas médicas \parencite{diaz2019,nolasco2019,herrera2021}.
 
+Nolasco Carbajal (2019) desarrolló una aplicación web para el control de citas médicas del Centro de Salud de San Jerónimo, Andahuaylas. El proyecto tuvo como propósito mejorar la organización de las citas mediante la automatización del registro de pacientes y la programación de consultas. Para su desarrollo se empleó la metodología de Programación Extrema (XP) y tecnologías como PHP, JavaScript y MySQL. Este antecedente demuestra que una plataforma web puede mejorar la organización de las citas médicas; no obstante, su propuesta no contempla el funcionamiento del sistema ante una pérdida temporal de conexión a Internet \parencite{nolasco2019}.
+
+Por su parte, \textcite{herrera2021} implementó un sistema web para la gestión de citas médicas en el Centro de Salud Nicrupampa del distrito de Independencia, Huaraz. El estudio tuvo como finalidad mejorar el proceso de programación de citas y disminuir las filas y aglomeraciones ocasionadas por la reservación presencial. La investigación utilizó un enfoque cuantitativo y un diseño preexperimental, evidenciando que la utilización del sistema facilitó el acceso de los pacientes a las citas y mejoró el proceso de programación \parencite{herrera2021}.
+
+De manera similar, \textcite{mera2022} desarrollaron una aplicación web orientada a mejorar la asignación de citas médicas por especialidad en una Microred de Salud de la ciudad de Chincha Baja. Este trabajo constituye un antecedente relacionado con la utilización de herramientas web para organizar y mejorar el proceso de asignación de citas médicas, demostrando la aplicación de soluciones tecnológicas para atender necesidades relacionadas con la gestión de consultas \parencite{mera2022}.
+
+Asimismo, \textcite{quispe2018} desarrolló una aplicación web para la gestión de historias clínicas en el Centro de Salud San Isidro. El sistema permitió centralizar la información de los pacientes y facilitar su consulta por parte del personal autorizado. Además, el proyecto planteó una arquitectura basada en API para separar los componentes del sistema y mejorar la comunicación entre el cliente y el servidor. Este antecedente resulta relevante para el presente proyecto debido a que una arquitectura desacoplada puede facilitar la implementación de mecanismos de almacenamiento local y posterior sincronización de información.
+
+En el ámbito de los sistemas de citas médicas basados en la web, \textcite{zhao2017} realizaron una revisión sistemática en la que analizaron sus beneficios, características y principales dificultades. Los autores identificaron que estas plataformas pueden mejorar el acceso a los servicios médicos, facilitar la administración de los horarios y reducir el tiempo empleado en la reservación de consultas. También analizaron mecanismos de procesamiento síncrono y asíncrono, siendo estos últimos relevantes para sistemas que necesitan conservar temporalmente operaciones y procesarlas cuando la comunicación con el servidor vuelva a estar disponible \parencite{zhao2017}.
+
+Por otra parte, existen propuestas que consideran estándares para la interoperabilidad de información relacionada con las citas médicas. SanteNet (2026) presenta el uso de FHIR para la programación de citas, proporcionando una estructura orientada al intercambio de información relacionada con este proceso \parencite{santenet2026}. Este recurso constituye una referencia tecnológica relacionada con la gestión e intercambio de información de citas médicas.
+
+En el contexto nacional, \textcite{siero2025} desarrollaron un sistema web destinado a la gestión de citas y la optimización del flujo de espera de pacientes y citas médicas en un consultorio ubicado en La Concepción, Masaya. La propuesta buscó organizar la atención de los pacientes y mejorar el control de las consultas mediante una solución digital. Este antecedente demuestra la aplicación de sistemas web para la gestión de citas médicas dentro del contexto nicaragüense \parencite{siero2025}.
+
+De igual manera, \textcite{valera2024} desarrolló un sistema web para la gestión de citas médicas en una clínica dental de Chimbote. Este trabajo evidencia la aplicación de soluciones web en establecimientos de salud para organizar y administrar las citas médicas, constituyendo otro antecedente relacionado con la digitalización de este proceso \parencite{valera2024}.
+
+Los antecedentes estudiados demuestran que los sistemas web pueden contribuir a mejorar la organización de las citas médicas, centralizar la información y facilitar el acceso de los usuarios a los servicios relacionados con la programación de consultas \parencite{diaz2019,nolasco2019,herrera2021,mera2022,valera2024}. Sin embargo, los trabajos revisados no se encuentran orientados específicamente a resolver la operación de un sistema de citas médicas ante interrupciones de conectividad. Por esta razón, el presente proyecto propone el diseño e implementación de un sistema web de gestión de citas médicas con soporte para operar en entornos de conectividad intermitente, permitiendo continuar determinadas operaciones durante una interrupción y sincronizar la información cuando se recupere la conexión.
+
+\section{Planteamiento del problema}
+
+En la actualidad, la gestión de citas médicas requiere un control organizado de la información relacionada con los pacientes, médicos, horarios y consultas programadas. Una adecuada administración de estos datos permite mejorar la organización de las actividades diarias y facilitar el acceso a la información necesaria para la atención de los pacientes.
+
+En la clínica privada considerada para el proyecto, la gestión de las citas puede realizarse mediante procesos manuales y llamadas telefónicas, lo que genera dependencia del personal administrativo para registrar, consultar y comunicar la información relacionada con las consultas. Esta situación puede dificultar el acceso oportuno a los datos y hacer que la organización de las citas dependa de registros que no siempre se encuentran disponibles de manera inmediata.
+
+Además, el personal administrativo necesita consultar diariamente las citas programadas para organizar la atención de los pacientes. La dependencia de recordatorios realizados de manera manual puede provocar que esta información sea olvidada o que los registros físicos no estén disponibles en el momento necesario. De igual manera, los pacientes requieren recibir información relacionada con sus citas y contar con una forma más organizada de consultar el tratamiento indicado por el médico después de una consulta.
+
+Otro aspecto que debe considerarse es la posibilidad de interrupciones en la conectividad a Internet. En estas situaciones, un sistema que dependa completamente de una conexión estable podría limitar el acceso a la información y afectar la continuidad de las actividades relacionadas con la gestión de citas.
+
+Ante esta situación, surge la necesidad de desarrollar e implementar un sistema web de gestión de citas médicas que permita centralizar la información y facilitar las actividades de pacientes, médicos y personal administrativo. El sistema contemplará la gestión de citas, la visualización de las citas programadas, el envío de recordatorios a los pacientes y el seguimiento de los tratamientos prescritos.
+
+Asimismo, el sistema será diseñado considerando escenarios de conectividad intermitente, con el propósito de mantener la disponibilidad de las funciones necesarias para la gestión de las citas y reducir la dependencia de una conexión permanente. De esta manera, el proyecto busca contribuir a una gestión más organizada de la información y facilitar la interacción entre pacientes y personal de la clínica.
+
+\section{Justificación}
+
+El presente proyecto surge de la necesidad de modernizar y optimizar la gestión de citas médicas, debido a las dificultades que pueden presentarse en la organización y administración de los datos relacionados con las consultas. La utilización de métodos convencionales para agendar y controlar citas puede ocasionar problemas operativos como dobles reservas, largos tiempos de espera, dificultades para mantener organizada la agenda y una comunicación limitada entre el personal administrativo, los médicos y los pacientes.
+
+Ante esta situación, el desarrollo de un sistema web permitirá centralizar y organizar la información relacionada con los pacientes, médicos, consultorios y citas de la clínica. La plataforma facilitará al personal administrativo la consulta y gestión organizada de la agenda correspondiente a la atención de los pacientes.
+
+Como parte de las funcionalidades del sistema, se implementará un mecanismo de recordatorios de citas dirigido a los pacientes. Esta funcionalidad surge debido a que uno de los medios utilizados para que el paciente recuerde su cita puede ser un comprobante físico entregado al momento de programarla. Dicho comprobante puede extraviarse o puede ocurrir que el paciente olvide que lo tiene, provocando que no recuerde oportunamente la fecha y hora de su consulta. Por medio de los recordatorios, el sistema proporcionará al paciente un medio adicional para mantener presente la información de su cita y contribuir a disminuir los olvidos relacionados con la asistencia a la consulta.
+
+Además de los recordatorios, se desarrollará una funcionalidad para el seguimiento de los tratamientos indicados por el médico. Esta funcionalidad permitirá que, después de realizar una consulta, el médico pueda registrar dentro del sistema el tratamiento correspondiente al paciente, incluyendo las indicaciones que este deberá cumplir durante el período establecido.
+
+Desde su perfil, el paciente podrá consultar el tratamiento que ha sido asignado y registrar el cumplimiento de las indicaciones establecidas. De esta manera, se generará un registro del seguimiento realizado por el paciente durante el tratamiento. El médico podrá consultar esta información y obtener una mayor visibilidad sobre el cumplimiento del tratamiento indicado, contando con información adicional para el seguimiento que deberá realizarse en consultas posteriores.
+
+Con la incorporación de esta funcionalidad, el sistema no se limitará únicamente a la gestión de las citas médicas, sino que también permitirá mantener un seguimiento organizado de las indicaciones realizadas después de la consulta. Esto permitirá centralizar dentro de una misma plataforma la información relacionada con la cita y el seguimiento posterior del paciente.
+
+Otro aspecto relevante del proyecto es el funcionamiento ante escenarios de conectividad intermitente. El sistema permitirá que determinadas operaciones puedan continuar durante períodos de interrupción de la conexión y que la información pueda sincronizarse posteriormente cuando se restablezca la comunicación con el servidor. De esta manera, se busca reducir la dependencia de una conexión permanente y mantener la continuidad de las operaciones relacionadas con la gestión de citas.
+
+Por tanto, el proyecto permitirá integrar en una misma plataforma la gestión de citas, los recordatorios y el seguimiento de tratamientos, proporcionando una herramienta orientada a mejorar la organización de la información y facilitar la interacción entre pacientes, médicos y personal administrativo.
+
+\section{Formulación del problema}
+
+¿Cómo contribuirá el diseño e implementación de un sistema web de gestión de citas médicas con soporte para operación en entornos de conectividad intermitente a la optimización de los procesos administrativos, la organización de las citas y el seguimiento de la información relacionada con los pacientes?
+
+\section{Objetivo general}
+
+Desarrollar un sistema de información integral para la administración de citas médicas, integrando módulos de agendamiento y mecanismos de funcionamiento ante conectividad intermitente, con el fin de optimizar los procesos administrativos y la experiencia del paciente en clínicas generales.
+
+\section{Objetivos específicos}
+
+\begin{itemize}
+	\item Analizar los requerimientos funcionales y no funcionales necesarios para el desarrollo de la aplicación de gestión de citas médicas.
+	
+	\item Diseñar la arquitectura del sistema, la base de datos y las interfaces de usuario que permitan una gestión eficiente de las citas médicas.
+	
+	\item Desarrollar los módulos funcionales de la aplicación para la administración de pacientes, médicos, consultorios, citas y reprogramaciones.
+	
+	\item Implementar mecanismos de autenticación, autorización y protección de datos que garanticen la seguridad y confidencialidad de la información.
+	
+	\item Integrar mecanismos de sincronización de datos que permitan la continuidad del servicio en escenarios de conectividad intermitente.
+	
+	\item Realizar pruebas funcionales, de integración y de aceptación para validar el correcto funcionamiento de la aplicación y el cumplimiento de los requisitos establecidos.
+\end{itemize}
