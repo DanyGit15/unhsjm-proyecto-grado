@@ -1,2 +1,252 @@
 % Capítulo 3: Metodología
 % Propósito: Detallar el enfoque metodológico, diseño de investigación, técnicas e instrumentos de recolección de información y la metodología de desarrollo de software seleccionada.
+
+\section{Marco metodológico}
+\label{sec:metodologia}
+
+\subsection{Metodología de la investigación}
+
+La presente investigación se orienta al diseño e implementación
+de un sistema web de gestión de citas médicas con soporte para
+la operación en entornos de conectividad intermitente. Para
+organizar el proceso de investigación se propone la Metodología
+de Investigación en Ciencia del Diseño
+(\textit{Design Science Research Methodology}, DSRM), debido
+a que permite estructurar el análisis de un problema, el diseño
+y desarrollo de una solución tecnológica, y su posterior
+demostración y evaluación. Esta metodología establece un proceso
+orientado a la construcción de artefactos y a la valoración de
+su utilidad para abordar un problema identificado.
+\parencite{peffers2007dsrm}.
+
+La metodología se utilizará como guía para relacionar la
+problemática identificada con los requisitos del sistema, las
+decisiones de diseño, la implementación del artefacto y la
+comprobación de su funcionamiento. De esta manera, se busca
+mantener la correspondencia entre los objetivos de la
+investigación y los resultados obtenidos durante el desarrollo.
+
+La aplicación de esta metodología se organizará en etapas
+relacionadas con la identificación del problema, la definición
+de los objetivos de la solución, el diseño y desarrollo del
+sistema, su demostración, su evaluación y la comunicación de
+los resultados.
+
+\subsection{Tipo de investigación}
+
+La investigación se orienta a la solución de un problema
+práctico mediante el desarrollo de un artefacto de software.
+Su propósito es diseñar e implementar un sistema web que
+permita gestionar citas médicas y contemple mecanismos para
+operar ante interrupciones de conectividad, de acuerdo con
+los requisitos que se definan durante el análisis del sistema.
+
+El resultado esperado es una implementación de software
+acompañada de los modelos, diseños y documentación necesarios
+para explicar su construcción y funcionamiento.
+
+La delimitación definitiva del alcance de la investigación
+y de los procedimientos de evaluación se establecerá en
+correspondencia con los objetivos aprobados y los recursos
+disponibles para el desarrollo del proyecto.
+
+\subsection{Etapas metodológicas}
+
+\subsection{Identificación del problema y motivación}
+
+En esta etapa se delimitará el problema relacionado con la
+gestión de citas médicas en condiciones de conectividad
+intermitente. Se examinarán las necesidades que justifican
+el desarrollo del sistema y las dificultades que pueden
+presentarse cuando la conexión con los servicios remotos
+no está disponible.
+
+La identificación del problema servirá como fundamento para
+establecer los requisitos y determinar qué operaciones
+deberá contemplar el sistema durante una interrupción de
+conectividad.
+
+\subsection{Definición de los objetivos de la solución}
+
+A partir del problema identificado y de los objetivos de
+la investigación, se establecerán los requisitos funcionales
+y no funcionales que deberá satisfacer el sistema.
+
+Esta etapa permitirá delimitar las operaciones de gestión
+de citas, los tipos de usuario contemplados y el comportamiento
+esperado ante la pérdida y recuperación de la conexión.
+Los requisitos definitivos se documentarán antes de utilizarlos
+como criterios para el diseño y la evaluación del sistema.
+
+\subsection{Diseño y desarrollo del sistema}
+
+En esta etapa se elaborará el diseño de la solución tecnológica
+a partir de los requisitos establecidos. Se definirán la
+arquitectura del sistema, la organización de sus componentes,
+los modelos de datos y los diagramas necesarios para
+representar su estructura y funcionamiento.
+
+También se diseñará el mecanismo que permitirá gestionar
+las operaciones contempladas durante los periodos sin
+conectividad y determinar cómo se procesarán los datos
+pendientes cuando se recupere la conexión.
+
+Posteriormente, se implementarán los componentes definidos
+en el diseño. Las tecnologías y los mecanismos concretos
+de almacenamiento local y sincronización se seleccionarán
+de acuerdo con los requisitos y las condiciones técnicas
+del proyecto.
+
+\subsection{Demostración del sistema}
+
+La demostración tendrá como finalidad comprobar que el
+sistema implementado puede ejecutar las operaciones previstas
+para los escenarios contemplados en los requisitos.
+
+Se definirán casos de prueba relacionados con el flujo de
+gestión de citas y con las condiciones de conectividad que
+se decida evaluar. Los procedimientos definitivos dependerán
+de la funcionalidad implementada y de las condiciones
+disponibles para realizar las pruebas.
+
+\subsection{Evaluación del sistema}
+
+La evaluación se orientará a comprobar el cumplimiento de
+los requisitos definidos y el comportamiento del sistema
+en los escenarios de prueba establecidos.
+
+En particular, se considerará la operación durante una
+interrupción de conectividad y el procesamiento de los datos
+pendientes tras la recuperación de la conexión, siempre
+que estos comportamientos formen parte de los requisitos
+implementados.
+
+Los criterios, indicadores y procedimientos de evaluación
+se especificarán a partir de los requisitos aprobados y de
+las capacidades reales del sistema. La participación de
+usuarios y la realización de pruebas en un entorno clínico
+se determinarán de acuerdo con la disponibilidad de acceso
+y las autorizaciones correspondientes.
+
+\subsection{Comunicación de los resultados}
+
+Finalmente, se documentarán el proceso de investigación,
+las decisiones de diseño, la implementación realizada,
+las pruebas ejecutadas y los resultados obtenidos.
+
+La presentación de los resultados permitirá establecer la
+correspondencia entre el problema identificado, los
+objetivos de la investigación, la solución desarrollada
+y las evidencias obtenidas durante su evaluación.
+
+
+
+\clearpage
+
+\section{Cronograma de actividades}
+\label{sec:cronograma}
+
+El cronograma presenta la distribución temporal de las
+actividades previstas para el desarrollo del proyecto,
+organizadas en dieciséis semanas de trabajo a partir
+del 27 de julio de 2026.
+
+\begin{figure}[htbp]
+	\centering
+	\scriptsize
+	
+	% Configuración general
+	\setlength{\tabcolsep}{3pt}
+	
+	% =====================================================
+	% PRIMER BLOQUE: SEMANAS 1 A 8
+	% =====================================================
+	
+	\textbf{Primer período: semanas 1--8}
+	
+	\vspace{0.2cm}
+	
+	\begin{ganttchart}[
+		hgrid,
+		vgrid,
+		x unit=0.68cm,
+		y unit chart=0.48cm,
+		title height=0.7,
+		bar height=0.35,
+		bar/.append style={fill=gray!45},
+		bar label font=\tiny,
+		bar label node/.append style={
+			text width=5.2cm,
+			align=left
+		},
+		title label font=\scriptsize\bfseries,
+		title/.append style={fill=gray!20},
+		canvas/.append style={draw=black},
+		group label font=\tiny
+		]{1}{8}
+		
+		\gantttitle{Semanas 1--8}{8}\\
+		\gantttitlelist{1,...,8}{1}\\
+		
+		\ganttbar{1. Planificación y delimitación del problema}{1}{2}\\
+		\ganttbar{2. Búsqueda de antecedentes y literatura científica}{2}{3}\\
+		\ganttbar{3. Clasificación y análisis de la literatura}{3}{3}\\
+		\ganttbar{4. Análisis y documentación de requisitos}{4}{5}\\
+		\ganttbar{5. Historias de usuario y casos de uso}{5}{6}\\
+		\ganttbar{6. Elaboración de diagramas UML}{6}{6}\\
+		\ganttbar{7. Diseño de arquitectura y modelo de datos}{7}{7}\\
+		\ganttbar{8. Diseño de operaciones sin conexión y preparación del entorno}{8}{8}
+		
+	\end{ganttchart}
+	
+	\vspace{0.6cm}
+	
+	% =====================================================
+	% SEGUNDO BLOQUE: SEMANAS 9 A 16
+	% =====================================================
+	
+	\textbf{Segundo período: semanas 9--16}
+	
+	\vspace{0.2cm}
+	
+	\begin{ganttchart}[
+		hgrid,
+		vgrid,
+		x unit=0.68cm,
+		y unit chart=0.48cm,
+		title height=0.7,
+		bar height=0.35,
+		bar/.append style={fill=gray!45},
+		bar label font=\tiny,
+		bar label node/.append style={
+			text width=5.2cm,
+			align=left
+		},
+		title label font=\scriptsize\bfseries,
+		title/.append style={fill=gray!20},
+		canvas/.append style={draw=black},
+		group label font=\tiny
+		]{9}{16}
+		
+		\gantttitle{Semanas 9--16}{8}\\
+		\gantttitlelist{9,...,16}{1}\\
+		
+		\ganttbar{9. Desarrollo de los módulos principales}{9}{10}\\
+		\ganttbar{10. Implementación de operaciones sin conexión}{11}{11}\\
+		\ganttbar{11. Implementación y ajustes de sincronización}{12}{12}\\
+		\ganttbar{12. Pruebas funcionales y de conectividad}{13}{13}\\
+		\ganttbar{13. Evaluación y corrección de errores}{14}{14}\\
+		\ganttbar{14. Redacción de resultados y conclusiones}{15}{15}\\
+		\ganttbar{15. Revisión y correcciones del documento}{16}{16}\\
+		\ganttbar{16. Preparación de la entrega final}{16}{16}
+		
+	\end{ganttchart}
+	
+	\caption{Cronograma semanal previsto para el desarrollo del proyecto.}
+	\label{fig:cronograma}
+	
+\end{figure}
+
+\clearpage
+
+

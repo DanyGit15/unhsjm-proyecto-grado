@@ -1,0 +1,88 @@
+ \documentclass[stu, floatsintext, 12pt, spanish]{apa7}
+
+% ==========================================
+% Paquetes de Idioma, Codificación y Fuentes
+% ==========================================
+\usepackage[utf8]{inputenc}
+\usepackage[spanish, es-tabla]{babel}
+\usepackage{csquotes}
+
+% ==========================================
+% Paquetes Gráficos y Ruta de Imágenes
+% ==========================================
+\usepackage{graphicx}
+\graphicspath{{figuras/}} % Búsqueda automática en la carpeta figuras/
+\usepackage{hyperref}
+
+% Ajuste de la altura de la cabecera
+\setlength{\headheight}{16pt}
+
+% ==========================================
+% Configuración Bibliográfica (APA 7 - BibLaTeX + Biber)
+% ==========================================
+\usepackage[backend=biber, style=apa]{biblatex}
+\addbibresource{referencias.bib}
+
+% ==========================================
+% Estilos Personalizados UNHSJM
+% ==========================================
+\usepackage{unhsjm-formato}
+\usepackage{pgfgantt}
+\usepackage{pdflscape}
+
+% Ruta del Logo Institucional (ubicado en figuras/)
+\unhsjmlogo{figuras/logo-unhsjm.jpeg}
+
+% ==========================================
+% Portada e Información Institucional (UNHSJM)
+% ==========================================
+\universidad{UNIVERSIDAD NACIONAL HÉROES SAN JOSÉ DE LAS MULAS}
+\facultad{FACULTAD DE CIENCIAS E INGENIERÍAS}
+\carrera{CARRERA DE INGENIERÍA EN SISTEMAS DE INFORMACIÓN}
+
+% Modalidad de Culminación de Estudios (Cambiar según corresponda: "PROYECTO DE GRADO" o "MONOGRAFÍA")
+\modalidad{PROYECTO DE GRADO}
+% \modalidad{MONOGRAFÍA}
+
+% Título y Subtítulo del Trabajo
+\title{Diseño e implementación de un sistema web para la gestión de citas médicas en entornos de conectividad intermitente}
+\shorttitle{Sistema Web de Citas Médicas}
+
+% Autores (Trabajo Grupal o Individual)
+% Para agregar múltiples integrantes, separe las líneas con \\
+\autores{
+  - Dany Joshua Incer Gómez (Carnet: 2240244) \\
+  - Elmer Javier Pastora Mendez (Carnet: 2240021)
+}
+
+% Tutor / Asesor del Trabajo
+\tutor{Ing. Guillermo Aguirre / Asesor, M.Sc.}
+
+% Ubicación y Fecha
+\ciudad{Rivas, Nicaragua}
+\fecha{Septiembre, 2026}
+
+\begin{document}
+
+% Generar Portada Institucional
+\maketitle
+
+% Tabla de Contenidos / Índice
+\tableofcontents
+\newpage
+
+% ==========================================
+% Inclusión de Capítulos
+% ==========================================
+\include{capitulos/01-introduccion}
+\include{capitulos/02-marco-teorico}
+\include{capitulos/03-metodologia}
+\include{capitulos/04-desarrollo}
+\include{capitulos/05-conclusiones}
+
+% ==========================================
+% Referencias Bibliográficas
+% ==========================================
+\printbibliography[heading=bibintoc, title={Referencias}]
+
+\end{document}
